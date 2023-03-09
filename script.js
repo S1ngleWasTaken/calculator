@@ -2,7 +2,7 @@
 const displayParagraph = document.getElementById("displayP");
 const cBtn = document.getElementById("Cbtn");
 const changeSignBtn = document.getElementById("+/-btn");
-const ansBtn = document.getElementById("ansbtn");
+const equalsBtn = document.getElementById("equalsbtn");
 const divideBtn = document.getElementById("/btn");
 const oneBtn = document.getElementById("1btn");
 const twoBtn = document.getElementById("2btn");
@@ -17,19 +17,45 @@ const eightBtn = document.getElementById("8btn");
 const nineBtn = document.getElementById("9btn");
 const minusBtn = document.getElementById("-btn");
 let numbers = [];
-let num = ""
+let firstNum = 0
+let num = "";
 let signs = [];
 let result;
 let ans;
 let saveNum = function(element){
-    num += element.textContent
-    console.log(num)
-    displayParagraph.textContent = num
+    num += element.textContent;
+    console.log(`Num:${num}`)
+    displayParagraph.textContent = num;
+    if (firstNum != 0) {
+        numbers.push(Number(num));
+        console.log(numbers)
+    }
 }
 let saveSign = function(element){
-    numbers.push(Number(num));
-    num = ""
+    if (firstNum == 0){
+        firstNum += Number(num);
+        num = "";
+        console.log(`firstNum:${firstNum}`)
+    }
+    num = "";
     signs.push(element.textContent);
-    console.log(numbers)
-    displayParagraph.textContent = element.textContent
+    console.log(signs)
+    displayParagraph.textContent = element.textContent;
+}
+let cancel = function(){
+    numbers = [];
+    num = "";
+    signs = [];
+    firstNum = 0
+    displayParagraph.textContent = "";
+    console.log("%ccancel", "background-color:white;")
+}
+let equals = function(){
+    result = firstNum;
+    for (let i = 0; i < numbers.length; i++) {
+        if (signs[i] == "+") {
+            result += numbers[i]
+        }
+    }
+    displayParagraph.textContent = result
 }

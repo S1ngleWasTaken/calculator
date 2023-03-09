@@ -12,9 +12,9 @@
         <h1>CALCULATOR</h1>
         <div class="display"><p id="displayP"></p></div>
         <div class="btns">
-        <button id="Cbtn">C</button>
+        <button id="Cbtn" onclick="cancel()">C</button>
         <button id="+/-btn">+/-</button>
-        <button id="ansbtn">ans</button>
+        <button id="-btn" onclick="saveSign(this)">-</button>
         <button id="/btn" onclick="saveSign(this)" onclick="saveNum(this)">/</button>
         <button id="1btn" class="number-btn"onclick="saveNum(this)">1</button>
         <button id="2btn" class="number-btn" onclick="saveNum(this)">2</button>
@@ -27,7 +27,7 @@
         <button id="7btn" class="number-btn"onclick="saveNum(this)">7</button>
         <button id="8btn" class="number-btn"onclick="saveNum(this)">8</button>
         <button id="9btn" class="number-btn"onclick="saveNum(this)">9</button>
-        <button id="-btn" onclick="saveSign(this)">-</button>
+        <button id="equalsbtn" onclick="equals()">=</button>
         </div>
     </div>
     <script src="script.js"></script>
